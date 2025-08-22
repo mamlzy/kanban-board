@@ -20,7 +20,11 @@ export function TaskCard({
   };
 
   return (
-    <div className="m-2 w-60 rounded-lg border border-gray-300 bg-gray-50 px-2">
+    <div
+      draggable
+      onDragStart={(e) => e.dataTransfer.setData("id", task.id)}
+      className="m-2 rounded-lg border border-gray-300 bg-gray-50 px-2"
+    >
       <div className="py-2">
         {isEditingTitle ? (
           <input
