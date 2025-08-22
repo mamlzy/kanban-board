@@ -14,16 +14,16 @@ function App() {
     };
   });
 
-  const updateTaskPoints = (task: Task, points: number) => {
+  const updateTask = (newTask: Task) => {
     setTasks((prevTasks) =>
-      prevTasks.map((t) => (t.id === task.id ? { ...t, points } : t)),
+      prevTasks.map((t) => (t.id === newTask.id ? newTask : t)),
     );
   };
 
   return (
     <div className="flex divide-x divide-gray-200">
       {columns.map((column) => (
-        <div className="">
+        <div>
           <div className="flex items-center justify-between p-2 font-bold text-gray-500">
             <h2 className="text-3xl capitalize">{column.status}</h2>
             <span className="text-lg">
@@ -31,7 +31,7 @@ function App() {
             </span>
           </div>
           {column.tasks.map((task) => (
-            <TaskCard task={task} updateTaskPoints={updateTaskPoints} />
+            <TaskCard task={task} updateTask={updateTask} />
           ))}
         </div>
       ))}
